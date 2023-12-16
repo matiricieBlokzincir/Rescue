@@ -26,18 +26,31 @@
       color: #666;
       cursor: not-allowed;
     }
-    
+
     /* Açılır menü stilini tanımla */
     #addressSelect {
-      display: block; /* Açılır menüyü görünür yap */
-      width: 300px; /* Genişliği ayarla */
-      margin: 0 auto; /* Select menüyü ortala */
+      display: block;
+      width: 300px;
+      margin: 0 auto;
       text-align: center;
     }
 
     /* Mesaj stilini tanımla */
     #message {
       color: red;
+    }
+
+    /* Acil durum seçenekleri stilini tanımla */
+    .emergency-options {
+      margin-top: 20px;
+    }
+
+    .emergency-options label {
+      display: block;
+    }
+
+    .emergency-options input[type="checkbox"] {
+      margin-right: 5px;
     }
   </style>
 </head>
@@ -149,15 +162,39 @@
       var message = document.getElementById("message");
 
       if (selectedOption === "") {
-        message.innerHTML = "Lütfen bir seçenek seçiniz.";
+        message.innerHTML = "Lütfen kayıtlı bir adres seçiniz.";
       } else {
         message.innerHTML = "";
         verifiedLocation.innerHTML = "Seçilen Adres: " + selectedOption;
+        document.getElementById("emergencyOptions").style.display = "block"; // Acil durum seçeneklerini göster
+      }
+    }
+
+    function sendEmergencyMessage() {
+      var emergencyOptions = document.getElementsByClassName("emergency-option");
+      var selectedOptions = [];
+
+      for (var i = 0; i < emergencyOptions.length; i++) {
+        if (emergencyOptions[i].checked) {
+          selectedOptions.push(emergencyOptions[i].value);
+        }
+      }
+
+      var message = document.getElementById("emergencyMessage").value;
+
+      // Burada seçilen acil durumları ve mesajı kullanarak bir işlem yapabilirsiniz.
+      // Örneğin, bir API'ye gönderebilir veya başka bir işlem gerçekleştirebilirsiniz.
+
+      if (selectedOptions.length > 0) {
+        alert("Seçilen acil durumlar: " + selectedOptions.join(", "));
+        alert("Mesajınız: " + message);
+      } else {
+        alert("Lütfen en az bir acil durum seçin.");
       }
     }
   </script>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz8nZkg7mY9XmdSojGdP5YEBo1HoZW5jg&callback=initMap">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
   </script>
 
   <h2>Kayıtlı Adresleriniz:</h2>
@@ -182,8 +219,7 @@
       <option value="Ofis (Altındağ/Ankara)">Ofis (Altındağ/Ankara)</option>
       <option value="TeyzeminEvi (Bahçelievler/Ankara)">TeyzeminEvi (Bahçelievler/Ankara)</option>
     </select><br>
-    <button class="cta-button" onclick="verifyLocation()">Seçilen Adresi Kullan</button>
-    <button class="cta-button">Konumu Kullan</button>
+    <button class="cta-button" onclick="verifyLocation()">Konumu Kullan</button>
   </div>
   
   <!-- Mesaj alanı -->
@@ -191,6 +227,31 @@
 
   <!-- Onaylanan konum -->
   <p id="verifiedLocation"></p>
+
+  <!-- Acil durum seçenekleri ve mesaj girişi -->
+  <div id="emergencyOptions" style="display: none;">
+    <h3>Lütfen Acil Durum Seçeneklerini Belirtin:</h3>
+    <div style="display: flex; justify-content: space-between;">
+      <div style="flex: 1; margin-right: 10px;">
+        <button class="cta-button" onclick="sendEmergencyMessage('Enkaz Altındayım')">Enkaz Altındayım</button>
+      </div>
+      <div style="flex: 1;">
+        <button class="cta-button" onclick="sendEmergencyMessage('Yaralıyım')">Yaralıyım Bölgede Yardıma İhtiyacım Var</button>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="flex: 1; margin-right: 10px;">
+        <button class="cta-button" onclick="sendEmergencyMessage('Bölgede Yardıma İhtiyacım Var')">Bölgede Yardıma İhtiyacım Var</button>
+      </div>
+      <div style="flex: 1;">
+        <input type="text" id="emergencyMessage" placeholder="Mesajınızı girin...">
+        <button class="cta-button" onclick="sendEmergencyMessage('Diğer Acil Durum 2')">Gönder</button>
+      </div>
+    </div>
+  </div>
+  
+  
+
 </body>
 
 </html>
