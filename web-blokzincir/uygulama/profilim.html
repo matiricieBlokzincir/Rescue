@@ -5,15 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <style>
+
+    .profile {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    .profile p {
+      margin: 10px 0;
+    }
+
+    #address-input {
+      margin-top: 10px;
+    }
+
+    #address-input input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    #address-input button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
   <title>Profilim</title>
 </head>
 
 <body>
   <header>
-  <b> <center> H A T T A &nbsp;&nbsp;  K A L !</center></b>
-  <br>
+    <b><center> H A T T A &nbsp;&nbsp; K A L !</center></b>
+    <br>
     <nav>
-
       <ul>
         <li><a href="index.html">Acil Durum</a></li>
         <li><a href="bolgehaberleri.html">Bölge Haberleri</a></li>
@@ -22,8 +56,44 @@
       </ul>
     </nav>
   </header>
-  
+  <div class="profile">
+    <h2>Profil Bilgileri</h2>
+    <p><b>T.C. Kimlik Numarası:</b> 11111111111</p>
+    <p><b>Telefon Numarası:</b> +905015555555</p>
+    <p><b>Adres:</b> Ev (Kızılay/Ankara) (İkametgah adresiniz)</p>
 
+    <div id="additional-addresses"></div>
+
+    <button class="cta-button" onclick="showAddressInput()">Adres Ekle</button>
+    <button class="cta-button" onclick="window.location.href='giris.html'">Çıkış Yap</button>
+    <br><br>
+    <div id="address-input" style="display: none;">
+      <input type="text" id="new-address" placeholder="Yeni adres giriniz">
+      <button onclick="addAddress()">Kaydet</button>
+    </div>
+  </div>
+
+  <script>
+    function showAddressInput() {
+      document.getElementById("address-input").style.display = "block";
+    }
+
+    function addAddress() {
+      var address = document.getElementById("new-address").value;
+      if (address.trim() !== "") {
+        var addressContainer = document.getElementById("additional-addresses");
+        var newAddress = document.createElement("p");
+        newAddress.textContent = address;
+        addressContainer.appendChild(newAddress);
+
+        // Formu temizle ve gizle
+        document.getElementById("new-address").value = "";
+        document.getElementById("address-input").style.display = "none";
+      } else {
+        alert("Lütfen bir adres giriniz.");
+      }
+    }
+  </script>
   <footer>
     <div class="social-icons">
       <a href="https://tr.linkedin.com/company/matiricie"><img src="linkedin-logo.png" alt="LinkedIn"></a>

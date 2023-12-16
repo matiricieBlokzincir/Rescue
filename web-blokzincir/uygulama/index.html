@@ -7,36 +7,44 @@
   <link rel="stylesheet" href="styles.css">
   <title>Ana Sayfa</title>
   <style>
-
-body {
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-text-align: center;
-  height: 100vh; /* Ekran yüksekliği kadar yer kaplar */
-  margin: 0;
-}
-
-
+    body {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+    }
 
     #map {
       height: 400px;
       width: 100%;
     }
 
-    /* "Konum Al" butonunun pasif stilini tanımla */
     #getLocationBtn:disabled {
-      background-color: #ccc; /* Pasif arka plan rengi */
-      color: #666; /* Pasif metin rengi */
-      cursor: not-allowed; /* Tıklanamaz imleci */
+      background-color: #ccc;
+      color: #666;
+      cursor: not-allowed;
+    }
+    
+    /* Açılır menü stilini tanımla */
+    #addressSelect {
+      display: block; /* Açılır menüyü görünür yap */
+      width: 300px; /* Genişliği ayarla */
+      margin: 0 auto; /* Select menüyü ortala */
+      text-align: center;
+    }
+
+    /* Mesaj stilini tanımla */
+    #message {
+      color: red;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <b> <center> H A T T A &nbsp;&nbsp;  K A L !</center></b>
+    <b> <center> H A T T A &nbsp;&nbsp; K A L !</center></b>
     <br>
     <nav>
       <ul>
@@ -55,7 +63,10 @@ text-align: center;
 
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
+        center: {
+          lat: -34.397,
+          lng: 150.644
+        },
         zoom: 6
       });
       infoWindow = new google.maps.InfoWindow;
@@ -63,21 +74,19 @@ text-align: center;
     }
 
     function getLocation() {
-      // "Konum Al" butonunu devre dışı bırak
       document.getElementById('getLocationBtn').disabled = true;
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           showPosition,
-          showError,
-          {
+          showError, {
             enableHighAccuracy: true,
             timeout: 10000,
             maximumAge: 0
           }
         );
       } else {
-        document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+        document.getElementById("location").innerHTML = "Tarayıcı tarafından konum izni verilmedi.";
       }
     }
 
@@ -94,7 +103,9 @@ text-align: center;
       infoWindow.open(map);
       map.setCenter(pos);
 
-      geocoder.geocode({ 'location': pos }, function (results, status) {
+      geocoder.geocode({
+        'location': pos
+      }, function (results, status) {
         if (status === 'OK') {
           if (results[0]) {
             var formattedAddress = results[0].formatted_address;
@@ -110,7 +121,7 @@ text-align: center;
             document.getElementById('address').innerHTML = 'Adres bulunamadı';
           }
         } else {
-          document.getElementById('address').innerHTML = 'Geocoder failed due to: ' + status;
+          document.getElementById('address').innerHTML = 'Geocoder hatası: ' + status;
         }
       });
     }
@@ -118,31 +129,41 @@ text-align: center;
     function showError(error) {
       switch (error.code) {
         case error.PERMISSION_DENIED:
-          document.getElementById("location").innerHTML = "User denied the request for Geolocation."
+          document.getElementById("location").innerHTML = "Kullanıcı konum iznini reddetti."
           break;
         case error.POSITION_UNAVAILABLE:
-          document.getElementById("location").innerHTML = "Location information is unavailable."
+          document.getElementById("location").innerHTML = "Konum bilgisi alınamıyor."
           break;
         case error.TIMEOUT:
-          document.getElementById("location").innerHTML = "The request to get user location timed out."
+          document.getElementById("location").innerHTML = "Konum bilgisi alınırken zaman aşıldı."
           break;
         case error.UNKNOWN_ERROR:
-          document.getElementById("location").innerHTML = "An unknown error occurred."
+          document.getElementById("location").innerHTML = "Bilinmeyen bir hata oluştu."
           break;
       }
     }
 
     function verifyLocation() {
-      document.getElementById("verifiedLocation").innerHTML = document.getElementById("location").innerHTML;
+      var selectedOption = document.getElementById("addressSelect").value;
+      var verifiedLocation = document.getElementById("verifiedLocation");
+      var message = document.getElementById("message");
+
+      if (selectedOption === "") {
+        message.innerHTML = "Lütfen bir seçenek seçiniz.";
+      } else {
+        message.innerHTML = "";
+        verifiedLocation.innerHTML = "Seçilen Adres: " + selectedOption;
+      }
     }
   </script>
 
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz8nZkg7mY9XmdSojGdP5YEBo1HoZW5jg&callback=initMap">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz8nZkg7mY9XmdSojGdP5YEBo1HoZW5jg&callback=initMap">
   </script>
 
-  <h2>Kayıtlı Adresiniz:</h2>
+  <h2>Kayıtlı Adresleriniz:</h2>
   <p>Ev (Kızılay/Ankara) (İkametgah adresiniz)</p>
+  <p>Ofis (Altındağ/Ankara) (İş adresiniz)</p>
+  <p>TeyzeminEvi (Bahçelievler/Ankara)</p>
 
   <h3>Farklı bir konumda mısınız?</h3>
   <button id="getLocationBtn" class="cta-button" onclick="getLocation()">Konum Al</button>
@@ -151,10 +172,24 @@ text-align: center;
   <div id="address"></div>
   <div id="latitude"></div>
   <div id="longitude"></div><br>
-  
 
-  <button id="useAddressButton" class="cta-button" style="display:none;" onclick="verifyLocation()">Bu Adresi Kullan</button>
-  <button onclick="verifyLocation()" class="cta-button" >Ev Adresini Kullan</button>
+  <!-- Açılır menü ve buton -->
+  <div>
+    <label for="addressSelect">Kayıtlı Adres Seçin:</label>
+    <select id="addressSelect">
+      <option value="" disabled selected>Seçiniz</option>
+      <option value="Ev (Kızılay/Ankara)">Ev (Kızılay/Ankara)</option>
+      <option value="Ofis (Altındağ/Ankara)">Ofis (Altındağ/Ankara)</option>
+      <option value="TeyzeminEvi (Bahçelievler/Ankara)">TeyzeminEvi (Bahçelievler/Ankara)</option>
+    </select><br>
+    <button class="cta-button" onclick="verifyLocation()">Seçilen Adresi Kullan</button>
+    <button class="cta-button">Konumu Kullan</button>
+  </div>
+  
+  <!-- Mesaj alanı -->
+  <p id="message"></p>
+
+  <!-- Onaylanan konum -->
   <p id="verifiedLocation"></p>
 </body>
 
