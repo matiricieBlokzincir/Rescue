@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Hava Durumu</title>
+  <style>
+    /* CSS ile tablo için bir stil tanımlayabilirsiniz */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <b><center> H A T T A &nbsp;&nbsp;  K A L !</center></b>
+    <br>
+    <nav>
+      <ul>
+        <li><a href="index.html">Acil Durum</a></li>
+        <li><a href="bolgehaberleri.html">Bölge Haberleri</a></li>
+        <li><a href="havadurumu.html">Hava Durumu</a></li>
+        <li><a href="profilim.html">Profilim</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="weather-container">
+    <!-- Hava durumu bilgileri burada listelenecek -->
+  </div>
+
+  <script>
+   var weatherData = {
+  "success": true,
+  "city": "ankara",
+  "result": [
+    {
+      "date": "16.12.2023",
+      "day": "Cumartesi",
+      "icon": "https://cdnydm.com/permedia/zvWjzjmkp5WUUEWob4d48Q.png?size=512x512",
+      "description": "orta şiddetli yağmur",
+      "status": "Yağmur",
+      "degree": "12.36",
+      "min": "7.5",
+      "max": "12.67",
+      "night": "9.84",
+      "humidity": "65"
+    },
+    {
+      "date": "17.12.2023",
+      "day": "Pazar",
+      "icon": "https://cdnydm.com/permedia/zvWjzjmkp5WUUEWob4d48Q.png?size=512x512",
+      "description": "hafif yağmur",
+      "status": "Yağmur",
+      "degree": "6.48",
+      "min": "2.45",
+      "max": "9.54",
+      "night": "2.45",
+      "humidity": "52"
+    },
+    {
+      "date": "18.12.2023",
+      "day": "Pazartesi",
+      "icon": "https://cdnydm.com/permedia/LC1i84c3Z2MtLUDNbzWz8A.png?size=512x512",
+      "description": "gökyüzü açık",
+      "status": "Açık",
+      "degree": "5.28",
+      "min": "0.9",
+      "max": "6.7",
+      "night": "2.42",
+      "humidity": "48"
+    },
+    {
+      "date": "19.12.2023",
+      "day": "Salı",
+      "icon": "https://cdnydm.com/permedia/4-txymOx-J8znrVLBm3yCg.png?size=512x512",
+      "description": "az bulutlu",
+      "status": "Bulutlu",
+      "degree": "6.42",
+      "min": "1.59",
+      "max": "7.95",
+      "night": "4.03",
+      "humidity": "50"
+    },
+    {
+      "date": "20.12.2023",
+      "day": "Çarşamba",
+      "icon": "https://cdnydm.com/permedia/LC1i84c3Z2MtLUDNbzWz8A.png?size=512x512",
+      "description": "gökyüzü açık",
+      "status": "Açık",
+      "degree": "7.51",
+      "min": "2.59",
+      "max": "9.17",
+      "night": "4.58",
+      "humidity": "54"
+    },
+    {
+      "date": "21.12.2023",
+      "day": "Perşembe",
+      "icon": "https://cdnydm.com/permedia/OFLicX5Yqfx3leLtY9bD_w.png?size=512x512",
+      "description": "kapalı bulutlu",
+      "status": "Bulutlu",
+      "degree": "7.91",
+      "min": "4.04",
+      "max": "8.53",
+      "night": "5.84",
+      "humidity": "55"
+    },
+    {
+      "date": "22.12.2023",
+      "day": "Cuma",
+      "icon": "https://cdnydm.com/permedia/OFLicX5Yqfx3leLtY9bD_w.png?size=512x512",
+      "description": "kapalı bulutlu",
+      "status": "Bulutlu",
+      "degree": "7.61",
+      "min": "4.77",
+      "max": "8.75",
+      "night": "6.26",
+      "humidity": "69"
+    }
+  ]
+};
+
+
+    // Hava durumu bilgilerini HTML tablosuna entegre etme
+    var weatherContainer = document.getElementById('weather-container');
+
+    // Tabloyu oluştur
+    var table = document.createElement('table');
+    var tableHeader = table.createTHead();
+    var row = tableHeader.insertRow(0);
+    var headers = ['Tarih', 'Gün', 'Açıklama', 'Durum', 'Derece', 'Minimum', 'Maksimum', 'Gece', 'Nem'];
+
+    for (var i = 0; i < headers.length; i++) {
+      var th = document.createElement('th');
+      th.innerHTML = headers[i];
+      row.appendChild(th);
+    }
+
+    var tableBody = table.createTBody();
+
+    for (var i = 0; i < weatherData.result.length; i++) {
+      var weather = weatherData.result[i];
+      var row = tableBody.insertRow(i);
+      var data = [weather.date, weather.day, weather.description, weather.status, weather.degree, weather.min, weather.max, weather.night, weather.humidity];
+
+      for (var j = 0; j < data.length; j++) {
+        var cell = row.insertCell(j);
+        cell.innerHTML = data[j];
+      }
+    }
+
+    // Tabloyu sayfaya ekleyin
+    weatherContainer.appendChild(table);
+  </script>
+</body>
+
+</html>

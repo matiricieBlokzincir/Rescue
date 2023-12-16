@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Son Dakika Bölge Haberleri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .news-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .news-time {
+            font-size: 14px;
+            color: #666;
+        }
+        .news-title {
+            margin-top: 5px;
+            font-size: 18px;
+            color: #333;
+        }
+        .news-description {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <b><center>H A T T A &nbsp;&nbsp; K A L !</center></b>
+        <br>
+        <nav>
+            <ul>
+                <li><a href="index.html">Acil Durum</a></li>
+                <li><a href="bolgehaberleri.html">Bölge Haberleri</a></li>
+                <li><a href="havadurumu.html">Hava Durumu</a></li>
+                <li><a href="profilim.html">Profilim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="news-container">
+        <!-- Haberler burada JavaScript tarafından doldurulacak -->
+    </div>
+
+    <script>
+        var newsData = [
+        {
+        "time": "15:18",
+        "title": "Konut Satışlarında Düşüş Devam Ediyor",
+        "description": "Ankara Tüm Emlakçılar Meslek Odası (ATEM) Başkanı Hakan Akçam, TÜİK'in kasım ayı konut satış istatistiklerini değerlendirdi. Akçam, konut satış oranlarının düştüğüne dikkat çekerek, inşaat sektöründe yaşanan maliyet artışını durdurmanın ilk yolunun yerli üreticiyi desteklemek ve dış girdi sayısını azaltmak olduğunu belirtti."
+    },
+    {
+        "time": "14:37",
+        "title": "Veteriner Hekimler: Denetimsiz üretim ve satışların önüne geçilmeli",
+        "description": "Türk Veteriner Hekimleri Birliği (TVHB) Merkez Konseyi Başkanı Murat Arslan, sahipsiz tehlike arz eden hayvanlar sorununa bilimin gerektirdiği şekilde yaklaştıklarını belirterek, 'Denetimsiz üretim ve satışların önüne geçilmeli. Bakımevlerinden hayvan sahiplenmek isteyenler ve 'pet shop'lardan hayvan satın alanlar, hayvan refahı ve sağlığı konusunda eğitime tabi tutulmalı.' dedi."
+    },
+    {
+        "time": "14:35",
+        "title": "Ankara'da uyuşturucu operasyonu: 4 kişi tutuklandı",
+        "description": "Ankara'da 'uyuşturucu madde imal ve ticareti, kasten yaralama, silahlı tehdit ve hakaret' suçlarına karışan şüphelilere yönelik operasyon sonucunda 4 kişi tutuklandı. Operasyon kapsamında suça sürüklenen çocuklar adli kontrol şartıyla serbest bırakılırken, diğer 4 şüpheli ise 'silahla tehdit ve kasten yaralama' suçundan tutuklandı."
+    },
+    {
+        "time": "14:22",
+        "title": "Kahramankazan'da 'Hemşehri Buluşmaları' programı düzenlendi",
+        "description": "Ankara'nın Kahramankazan ilçesinde MHP İlçe Başkanlığı tarafından 'Hemşehri Buluşmaları' programı düzenlendi."
+    },
+    {
+        "time": "12:35",
+        "title": "Ankara'da PATİKARA Hayvan Koruma Derneği kuruldu",
+        "description": "Ankara'nın Ayrancı Mahallesi'ndeki hayvanseverler, sahipsiz hayvanları tedavi ettirip yuvalandırmak için PATİKARA Hayvan Koruma Derneği'ni kurdu. Derneğin lansmanı Ankara'da düzenlenen sergi ile yapıldı. Dernek, kurtarma ihbarlarına yetişemeyen hayvanseverlere destek olmak için ayni ve nakdi bağışları kabul ediyor."
+    },
+    {
+        "time": "12:27",
+        "title": "Ilgaz 2-Yurduntepe Kayak Merkezi'nde kayak sezonu için hazırlıklar tamamlandı",
+        "description": "Ilgaz Dağı'nda bulunan Ilgaz 2-Yurduntepe Kayak Merkezi'nde kayak sezonu için hazırlıklar tamamlandı. Kış tatilini Yurduntepe'de geçirmek isteyen yerli ve yabancı ziyaretçiler, 2 bin metre yükseklikteki pistte dağın doğal güzellikleri arasında kayak ve snowboard yapıp, kızakla kayarak keyifli vakit geçirme imkanı buluyor. Yaklaşık 6 kilometrelik pistiyle kayakseverlerden ilgi gören Yurduntepe, kızakla kaymak isteyen küçük ziyaretçilerine de eğlenceli kış tatili imkanı sunuyor. Kayak merkezinde incelemelerde bulunan Kastamonu Valisi Meftun Dallı, Özel İdare Genel Sekreteri Nida Sinsi'den çalışmalar hakkında bilgi aldı."
+    },
+    {
+        "time": "11:51",
+        "title": "Ankara'da Profesör Çifti Nitelikli Dolandırıcılıktan Yargılanıyor",
+        "description": "Ankara'da profesörler Fatma F.E. ve Mehmet E. çifti, Avrupa Birliği fonlu projelere ortak etme vaadiyle 29 kişiyi milyonlarca lira dolandırdıkları iddiasıyla 'nitelikli dolandırıcılık' suçundan dava açıldı."
+    },
+    {
+        "time": "11:41",
+        "title": "Avukat, sosyal medya dolandırıcıları hakkında suç duyurusunda bulundu",
+        "description": "Ankara'da bir avukat, sosyal medyada 'kadın profili' ile tuzağa düşürdükleri erkekleri dolandıran şüpheliler hakkında suç duyurusunda bulundu. Dolandırıcılar, kurbanlarına samimiyet gösterip numaralarını talep ediyor ve ardından uygunsuz fotoğraflar göndererek ilişkiymiş gibi davranıyor. Daha sonra ise mağdurları telefonla arayarak para talep ediyorlar. Dolandırılan kişilerin para gönderdiği IBAN adresleri de dolandırıcılara ait olmuyor."
+    },
+    {
+        "time": "11:24",
+        "title": "TOBB ve EY Türkiye, Enflasyon Düzeltmesi Semineri düzenledi",
+        "description": "TOBB ve EY Türkiye temsilcileri, Ankara'da gerçekleşen Enflasyon Düzeltmesi Semineri'nde ekonomik ve mali gelişmeleri değerlendirdi. Seminerde enflasyon muhasebesinin uygulamaları ve etkileri üzerine uzmanlar tarafından değerlendirmeler yapıldı."
+    },
+    {
+        "time": "11:21",
+        "title": "Ankara-Kırıkkale-Delice ve Antalya-Alanya Otoyolu İhaleleri Tamamlandı",
+        "description": "Ulaştırma ve Altyapı Bakanı Abdulkadir Uraloğlu, Ankara-Kırıkkale-Delice ve Antalya-Alanya otoyolları için yapılan ihalelerin sonuçlandığını açıkladı. Fernas İnşaat, Ankara-Kırıkkale-Delice Otoyolu için en düşük teklifi verirken, Limak İnşaat Sanayi ve Ticaret AŞ, Antalya-Alanya Otoyolu için en düşük teklifi verdi. Projelerin tamamlanmasıyla ulaşım kalitesi artacak ve turizme katkı sağlanacak."
+    },
+    {
+        "time": "11:11",
+        "title": "Askerde kalp krizinden ölen diş hekimi, 36 yıl sonra şehit sayıldı",
+        "description": "Vatani görevini yapmak için gittiği Samsun'da 1987 yılında kalp krizinden hayatını kaybeden diş hekimi Ahmet Pekdemir, ailesinin Ankara 13'üncü İdare Mahkemesi'nde açtığı davada şehit sayıldı."
+    },
+    {
+        "time": "11:03",
+        "title": "DSİ Genel Müdürü: Türkiye'deki barajlarda su seviyesi arttı",
+        "description": "DSİ Genel Müdürü Mehmet Akif Balta, Türkiye'deki barajlarda aktif kullanılabilir su seviyesinin geçen yıla göre arttığını ve Ankara ile İstanbul'da içme suyu sorunu olmadığını belirtti. Balta, su kaynaklarının rahatladığını ve bu yıl daha fazla yağış alacaklarını tahmin ettiklerini söyledi."
+    },
+    {
+        "time": "10:44",
+        "title": "Yaşar Okuyan Yoğun Bakıma Alındı",
+        "description": "ESKİ Çalışma ve Sosyal Güvenlik Bakanı Yaşar Okuyan, akciğer rahatsızlığı nedeniyle tedavi gördüğü hastanede iç kanama geçirerek yoğun bakıma alındı. Durumu stabil olan Okuyan, entübe edildi ve tedavi süreci devam ediyor."
+    }
+        ];
+
+        var newsContainer = document.getElementById('news-container');
+
+        for (var i = 0; i < newsData.length; i++) {
+            var newsItem = document.createElement('div');
+            newsItem.classList.add('news-item');
+
+            var newsTime = document.createElement('p');
+            newsTime.classList.add('news-time');
+            newsTime.textContent = newsData[i].time;
+
+            var newsTitle = document.createElement('h2');
+            newsTitle.classList.add('news-title');
+            newsTitle.textContent = newsData[i].title;
+
+            var newsDescription = document.createElement('p');
+            newsDescription.classList.add('news-description');
+            newsDescription.textContent = newsData[i].description;
+
+            newsItem.appendChild(newsTime);
+            newsItem.appendChild(newsTitle);
+            newsItem.appendChild(newsDescription);
+
+            newsContainer.appendChild(newsItem);
+        }
+    </script>
+
+    <footer>
+        <div class="social-icons">
+            <!-- Sosyal medya ikonları -->
+        </div>
+    </footer>
+</body>
+</html>
