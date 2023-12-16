@@ -8,23 +8,14 @@
   <title>Ana Sayfa</title>
   <style>
     body {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
       height: 100vh;
       margin: 0;
     }
 
     #map {
-      height: 400px;
+      height: 250px;
       width: 100%;
-    }
-
-    #getLocationBtn:disabled {
-      background-color: #ccc;
-      color: #666;
-      cursor: not-allowed;
     }
 
     /* Açılır menü stilini tanımla */
@@ -33,11 +24,6 @@
       width: 300px;
       margin: 0 auto;
       text-align: center;
-    }
-
-    /* Mesaj stilini tanımla */
-    #message {
-      color: red;
     }
 
     /* Acil durum seçenekleri stilini tanımla */
@@ -51,6 +37,15 @@
 
     .emergency-options input[type="checkbox"] {
       margin-right: 5px;
+    }
+
+    #microphoneIcon {
+      cursor: pointer;
+    }
+
+    .right {
+      float: right;
+      margin-right: 20px;
     }
   </style>
 </head>
@@ -86,6 +81,16 @@
       geocoder = new google.maps.Geocoder;
     }
 
+    function useLocation() {
+      // Konumu Kullan butonuna tıklandığında çalışacak kod burada
+      var elementsToClear = document.querySelectorAll("#getLocationBtn, #address, #latitude, #longitude, #addressSelect, #verifiedLocation, #message");
+      for (var i = 0; i < elementsToClear.length; i++) {
+        elementsToClear[i].style.display = "none";
+      }
+
+      document.getElementById("emergencyOptions").style.display = "block";
+    }
+    
     function getLocation() {
       document.getElementById('getLocationBtn').disabled = true;
 
@@ -189,18 +194,38 @@
         alert("Seçilen acil durumlar: " + selectedOptions.join(", "));
         alert("Mesajınız: " + message);
       } else {
-        alert("Lütfen en az bir acil durum seçin.");
+        alert("bupopupolcak");
       }
     }
+
+    const emergencyMessageInput = document.getElementById("emergencyMessage");
+    const microphoneIcon = document.getElementById("microphoneIcon");
+    const spokenText = document.getElementById("spokenText");
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.onstart = function () {
+      microphoneIcon.classList.add("recording");
+    };
+
+    recognition.onend = function () {
+      microphoneIcon.classList.remove("recording");
+    };
+
+    recognition.onresult = function (event) {
+      const transcript = event.results[0][0].transcript;
+      spokenText.textContent = transcript;
+      emergencyMessageInput.value = transcript;
+    };
+
+    microphoneIcon.addEventListener("click", function () {
+      recognition.start();
+    });
   </script>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz8nZkg7mY9XmdSojGdP5YEBo1HoZW5jg&callback=initMap">
   </script>
-
-  <h2>Kayıtlı Adresleriniz:</h2>
-  <p>Ev (Kızılay/Ankara) (İkametgah adresiniz)</p>
-  <p>Ofis (Altındağ/Ankara) (İş adresiniz)</p>
-  <p>TeyzeminEvi (Bahçelievler/Ankara)</p>
 
   <h3>Farklı bir konumda mısınız?</h3>
   <button id="getLocationBtn" class="cta-button" onclick="getLocation()">Konum Al</button>
@@ -221,10 +246,9 @@
     </select><br>
     <button class="cta-button" onclick="verifyLocation()">Konumu Kullan</button>
   </div>
-  
+
   <!-- Mesaj alanı -->
   <p id="message"></p>
-
   <!-- Onaylanan konum -->
   <p id="verifiedLocation"></p>
 
@@ -236,22 +260,48 @@
         <button class="cta-button" onclick="sendEmergencyMessage('Enkaz Altındayım')">Enkaz Altındayım</button>
       </div>
       <div style="flex: 1;">
-        <button class="cta-button" onclick="sendEmergencyMessage('Yaralıyım')">Yaralıyım Bölgede Yardıma İhtiyacım Var</button>
-      </div>
-    </div>
-    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-      <div style="flex: 1; margin-right: 10px;">
-        <button class="cta-button" onclick="sendEmergencyMessage('Bölgede Yardıma İhtiyacım Var')">Bölgede Yardıma İhtiyacım Var</button>
+        <button class="cta-button" onclick="sendEmergencyMessage('Yaralıyım')">Yaralıyım</button>
       </div>
       <div style="flex: 1;">
-        <input type="text" id="emergencyMessage" placeholder="Mesajınızı girin...">
-        <button class="cta-button" onclick="sendEmergencyMessage('Diğer Acil Durum 2')">Gönder</button>
+        <button class="cta-button" onclick="sendEmergencyMessage('Bölgede Yardıma İhtiyaç Var')">Bölgede Yardıma İhtiyaç Var</button>
       </div>
     </div>
+    <div style="display: flex; align-items: center; margin-top: 10px;">
+      <div style="flex-grow: 1; margin-right: 10px;">
+          <input type="text" id="emergencyMessage" placeholder="Mesajınızı girin..." style="height: 50px; border: 1px solid red;">
+      </div>
+      <button class="cta-button right" onclick="startRecording()" style="padding: 0; border: none; background: none;">
+          <img src="mikrofon.png" width="50" height="50" alt="" style="vertical-align: middle;">
+      </button>
+  </div><br><br>
+  <div style="flex: 1;">
+    <button class="cta-button" onclick="sendEmergencyMessage('Gönder')">Gönder</button>
   </div>
+</div>
   
-  
+    
 
+  <script>
+    function startRecording() {
+      const microphoneIcon = document.getElementById("microphoneIcon");
+      const recognition = new SpeechRecognition();
+
+      recognition.onstart = function () {
+        microphoneIcon.classList.add("recording");
+      };
+
+      recognition.onend = function () {
+        microphoneIcon.classList.remove("recording");
+      };
+
+      recognition.onresult = function (event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById("emergencyMessage").value = transcript;
+      };
+
+      recognition.start();
+    }
+  </script>
 </body>
 
 </html>
