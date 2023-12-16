@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>İletişim</title>
+    <style>
+        #name,
+        #email,
+        #message {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #a91100;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                <li><a href="nasilcalisir.html">Nasıl Çalışır?</a></li>
+                <li><a href="ozellikler.html">Özellikler</a></li>
+                <li><a href="sss.html">SSS</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="content contact">
+        <h1 class="section-title">İletişim</h1>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h2>E-posta</h2>
+                <p>iletisim@matiricie.com</p>
+            </div>
+            <div class="contact-item">
+                <h2>Telefon</h2>
+                <p>+90 284 606 00 99</p>
+            </div>
+            <div class="contact-item">
+                <h2>Adres</h2>
+                <p>Edirne, Türkiye</p>
+            </div>
+
+        </div>
+        <center> Her zaman sizinle iletişimde olmak istiyoruz. Sorularınızı yanıtlamak, önerilerinizi dinlemek ve size
+            daha iyi hizmet verebilmek için buradayız.
+            <h2>İletişim Formu</h2>
+        </center>
+        <form id="contact-form">
+            <center> <label for="name">Ad Soyad:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-posta:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mesajınız:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <br>
+                <button type="submit" id="submit-button">Gönder</button>
+            </center>
+        </form>
+    </section>
+    <footer>
+        <div class="social-icons">
+            <a href="https://tr.linkedin.com/company/matiricie"><img src="linkedin-logo.png" alt="LinkedIn"></a>
+            <a href="https://www.instagram.com/matiricie"><img src="instagram-logo.png" alt="Instagram"></a>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Formun varsayılan gönderme işlemini engelle
+            alert("Mesajınız başarıyla gönderildi!");
+            document.getElementById("contact-form").reset();
+        });
+    </script>
+</body>
+
+</html>

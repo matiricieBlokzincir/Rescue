@@ -1,0 +1,679 @@
+/* Mobil cihazlar için stil kuralları */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    .container {
+        width: 100%;
+    }
+}
+
+/* Tablet cihazlar için stil kuralları */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* Büyük ekranlı cihazlar için stil kuralları */
+@media only screen and (min-width: 1025px) {
+    body {
+        font-size: 20px;
+    }
+
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* Genel stil ayarları */
+body {
+    /* Varsayılan font ayarları */
+    font-family: Arial, sans-serif;
+    /* Margin ve padding sıfırlama */
+    margin: 0;
+    padding: 0;
+}
+
+/* Üst menü stil ayarları */
+header {
+    /* Başlık rengi */
+    background-color: #a91100;
+    /* Başlık yazı rengi */
+    color: #fff;
+    /* Üst menü yüksekliği */
+    padding: 20px 0;
+
+
+}
+
+.welcome-section {
+    /* Arkaplan resmi ve boyutu */
+    background-image: url('background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    /* Yazı rengi ve yeri */
+    color: #fff;
+    text-align: center;
+
+}
+
+/* Resimlerin başlangıçta gizlenmesi */
+.mySlides {
+    display: none;
+    width: 100%;
+    height: auto;
+    max-width: 1024px;
+    max-height: 1024px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Küçük küçük kutucuklar falan */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+/* İleri & geri butonları */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Yazı numarası (1/3 vd.) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+/* Bir miktar animasyon */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.third-slide img {
+    max-width: 1000px;
+    /* Varsayılan genişlik */
+    max-height: 1000px;
+    /* Varsayılan yükseklik */
+}
+
+.user-input-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Call-to-action butonları için stil */
+.cta-button {
+    /* Arkaplan rengi */
+    background-color: #a91100;
+    /* Yazı rengi */
+    color: #fff;
+    padding: 15px 30px;
+    /* Font boyutu */
+    font-size: 20px;
+    /* Altçizgiyi kaldırma */
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.cta-button:hover {
+    /* Butonun üstüne gelince arkaplan ve renk değişikliği */
+    background-color: #fff;
+    color: #a91100;
+}
+
+.welcome-section h1 {
+    /* Yazı boyutu */
+    font-size: 36px;
+    /* Yazı tipi */
+    font-weight: bold;
+    /* Yazı rengi */
+    color: #a91100;
+}
+
+.welcome-section p {
+    /* Yazı boyutu */
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+nav ul {
+    /* Linkler için stili kaldırma */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* Linkleri ortalama */
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+a {
+    /* Linklerin rengi */
+    color: blue;
+}
+
+/* Kayan resim alanı stil ayarları */
+.slider {
+    display: flex;
+    overflow: hidden;
+    /* Slider boyutu */
+    width: 100%;
+    /* Arkaplan rengi boyutu */
+    background-color: #fff;
+}
+
+.slide {
+    flex: 0 0 100%;
+    /* Yazıyı ortalama */
+    text-align: center;
+}
+
+.slide img {
+    /* Resmi responsive hale getirmek için */
+    max-width: 100%;
+    height: auto;
+}
+
+/* H2 ve p etiketleri için stil ayarları */
+h2 {
+    /* Yazı rengi */
+    color: #a91100;
+    /* Yazı boyutu */
+    font-size: 24px;
+}
+
+p {
+    /* Paragraf içindeki yazıların rengi */
+    color: #333;
+}
+
+.section-title {
+    /* Yazı ortalama */
+    text-align: center;
+    /* Yazı rengi */
+    color: #a91100;
+    /* Yazı boyutu */
+    font-size: 28px;
+    /* Yazı stili */
+    font-weight: bold;
+    /* Yazıların altına boşluk */
+    margin-bottom: 20px;
+}
+
+.service {
+    /* Yazı ortalama */
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.service h2 {
+    /* h2 Başlık rengi */
+    color: #a91100;
+    /* h2 Başlık boyutu */
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.service p {
+    color: #333;
+}
+
+
+
+/* Footer stil ayarları */
+footer {
+    background-color: transparent;
+    /* Footer arka plan rengi */
+    color: #fff;
+    /* Metin rengi */
+    padding: 20px 0;
+    /* Yükseklik ve iç boşluk */
+    text-align: center;
+
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icons img {
+    /* Sosyal medya logo boyutu */
+    width: 40px;
+    height: 40px;
+}
+
+.about-content {
+    text-align: center;
+    /* Arka plan rengi */
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    /* Gölge efekti */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.about-content img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    /* Resim kenarları */
+    border-radius: 10px;
+
+}
+
+.about-content p {
+    text-align: center;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.contact-item {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 0 10px;
+    width: 200px;
+    height: auto;
+}
+
+.contact-item h2 {
+    font-size: 18px;
+    color: #a91100;
+}
+
+.contact-item p {
+    font-size: 16px;
+    color: #333;
+}
+
+.contact h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.contact form {
+    text-align: left;
+    margin: 20px;
+}
+
+.contact form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    font-size: 16px;
+
+}
+
+.contact form button {
+    background-color: #a91100;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contact form button:hover {
+    background-color: #ff5500;
+}
+
+.success-message {
+    color: green;
+    text-align: center;
+}
+
+.register-content {
+    text-align: center;
+}
+
+.register-form {
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.register-title {
+    font-size: 24px;
+    color: #a91100;
+    /* Başlık rengi */
+    margin-bottom: 20px;
+    /* Başlık ile form arasındaki boşluk */
+}
+
+.service-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.service-image {
+    max-width: 38%;
+    height: auto;
+}
+
+.service-text {
+    max-width: 48%;
+    text-align: justify;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #a91100;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #a91100;
+    border-radius: 5px;
+}
+
+.register-button {
+    background-color: #a91100;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    /* Kayıt butonu ile diğer formlar arasındaki boşluk */
+}
+
+.register-button:hover {
+    background-color: #fff;
+    color: #a91100;
+}
+
+.login-link {
+    margin-top: 20px;
+}
+
+.forgot-password-button {
+    background-color: #a91100;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    /* Şifre sıfırla butonu ile diğer formlar arasındaki boşluk */
+}
+
+.forgot-password-button:hover {
+    background-color: #fff;
+    color: #a91100;
+}
+
+.login-link {
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Metin kutularını büyütme */
+#name,
+#email,
+#message {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.register-link {
+    margin-top: 20px;
+    /* Kayıt Ol bağlantısı ile diğer formlar arasındaki boşluk */
+    text-align: center;
+    font-size: 16px;
+}
+
+.register-link a {
+    color: #a91100;
+    text-decoration: none;
+}
+
+.login-button {
+    background-color: #a91100;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    /* Giriş butonu ile diğer formlar arasındaki boşluk */
+}
+
+.login-button:hover {
+    background-color: #fff;
+    color: #a91100;
+}
+
+.forgot-password {
+    text-align: right;
+    font-size: 14px;
+    color: #a91100;
+    margin-top: 10px;
+    /* Şifremi Unuttum bağlantısı ile diğer formlar arasındaki boşluk */
+}
+
+.input-container {
+    margin: 15px 0;
+}
+
+.login-form {
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-title {
+    font-size: 24px;
+    color: #a91100;
+    /* Başlık rengi */
+    margin-bottom: 20px;
+    /* Başlık ile form arasındaki boşluk */
+}
+
+.login-content {
+    text-align: center;
+}
+
+.contact-form {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-button {
+    background-color: #a91100;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.contact-button:hover {
+    background-color: #fff;
+    color: #a91100;
+}
+
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.input-containerr {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover a {background-color: #a91100;}

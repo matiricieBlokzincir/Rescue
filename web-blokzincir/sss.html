@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>SSS</title>
+
+    <style>
+        /* FAQ Tasarımı için CSS stil tanımlamaları */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #a91100;
+        }
+
+        .faq-item {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            margin-top: 10px;
+            display: none;
+            color: #666;
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                <li><a href="nasilcalisir.html">Nasıl Çalışır?</a></li>
+                <li><a href="ozellikler.html">Özellikler</a></li>
+                <li><a href="sss.html">SSS</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="faq-container">
+        <h1>Sıkça Sorulan Sorular (SSS)</h1>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(1)">Projeyi nasıl kullanabilirim?</div>
+            <div class="faq-answer" id="answer1">Projeyi kullanmak için resmi web sitemizden veya uygulama mağazasından indirip kurun. Ardından, uygulamayı açarak hesap oluşturun veya giriş yapın. Kullanım kılavuzumuzu takip ederek projeyi hemen kullanmaya başlayabilirsiniz.</div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(2)">Uygulamanın temel işlevi nedir?</div>
+            <div class="faq-answer" id="answer2">Uygulamamız, acil durum ve günlük iletişim ihtiyaçları için yenilikçi bir çözüm sunar. Kullanıcılar, telefon ağlarına bağlı olmaksızın doğrudan iletişim kurabilirler.</div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(3)">Hangi cihazlarda çalışır?</div>
+            <div class="faq-answer" id="answer3">Uygulamamız, iOS ve Android gibi yaygın mobil işletim sistemlerinde çalışır. Ayrıca web tarayıcıları üzerinden de erişilebilir.</div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(4)">İletişim güvenliği nasıl sağlanır?</div>
+            <div class="faq-answer" id="answer4">Projemiz, gelişmiş şifreleme teknolojisi kullanarak iletişimleri güvende tutar. Tüm veriler şifrelenir ve sadece gönderici ile alıcı arasında paylaşılır.</div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(5)">Projeyi kişiselleştirebilir miyim?</div>
+            <div class="faq-answer" id="answer5">Evet, projeyi kişiselleştirmek için uygulama içindeki "Ayarlar" bölümünü ziyaret edebilirsiniz. Burada profil bilgilerinizi düzenleyebilir, bildirim tercihlerinizi ayarlayabilir ve tema seçeneklerini özelleştirebilirsiniz.</div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(6)">Projeye nasıl geri bildirimde bulunabilirim?</div>
+            <div class="faq-answer" id="answer6">Projeyi daha iyi yapmamıza yardımcı olmak için geri bildirimde bulunmak isterseniz, uygulama içindeki "Geri Bildirim" bölümünü kullanabilirsiniz. Sorunları rapor edebilir, önerilerde bulunabilir ve bizimle iletişime geçebilirsiniz.</div>
+        </div>
+    </div>
+    
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://tr.linkedin.com/company/matiricie"><img src="linkedin-logo.png" alt="LinkedIn"></a>
+            <a href="https://www.instagram.com/matiricie"><img src="instagram-logo.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById("answer" + id);
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

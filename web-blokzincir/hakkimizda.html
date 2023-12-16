@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Hakkımızda</title>
+
+
+    <style>
+        /* Ekibin bilgilerini düzenlemek için CSS stil tanımlamaları */
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .team-member-card {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .team-member-card:hover {
+            transform: scale(1.05);
+        }
+
+        .team-member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .team-member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member-name {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .team-member-role {
+            font-size: 14px;
+            color: #a91100;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: #a91100;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            margin: 20px 0;
+        }
+
+        .about-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                <li><a href="nasilcalisir.html">Nasıl Çalışır?</a></li>
+                <li><a href="ozellikler.html">Özellikler</a></li>
+                <li><a href="sss.html">SSS</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="content">
+        <h1 class="section-title">Hakkımızda</h1>
+        <div class="about-content">
+            <img src="matiricie.jpg" alt="Matiricie">
+            <p>HATTA KAL!, acil durum blokzincir haberleşme ağını içeren bir sistem üzerine kurulmuştur. Matiricie takımı olarak temel amacımız, telefon şebekelerinin çöktüğü afet durumlarında akıllı telefonları düşük güç tüketimli bir blokzincir ağı üzerinden birbirleriyle iletişim kurabilir hale getirmektir.</p>
+            <h2 class="section-title">Ne Yapıyoruz?</h2>
+            <p>HATTA KAL!, düşük güç tüketimi sağlayan özelleştirilmiş haberleşme protokolleri ve güvenli blokzincir teknolojisi kullanarak çalışır. Bu sayede afet durumlarında kesintisiz ve güvenli iletişim sağlanır. Ayrıca projemiz, e-devlet entegrasyonu ile vatandaşların güvenli bir şekilde kaydını yapmasını ve acil durum bilgilendirmelerini almasını sağlar.</p>
+          
+            <h2 class="section-title">Ekibimiz</h2>
+
+            <section class="team-members">
+                <!-- Ekip üyelerini tanıtan kartlar -->
+                <div class="team-member-card">
+                    <div class="team-member-image">
+                        <img src="ekip-uyesi1.jpg" alt="Ekip Üyesi 1">
+                    </div>
+                    <div class="team-member-name">Beril Yenice</div>
+                    <div class="team-member-role">Kurucu</div>
+                </div>
+        
+                <div class="team-member-card">
+                    <div class="team-member-image">
+                        <img src="ekip-uyesi2.jpg" alt="Ekip Üyesi 2">
+                    </div>
+                    <div class="team-member-name">Esra Çakır</div>
+                    <div class="team-member-role">Develope</div>
+                </div>
+        
+                <div class="team-member-card">
+                    <div class="team-member-image">
+                        <img src="ekip-uyesi3.jpg" alt="Ekip Üyesi 3">
+                    </div>
+                    <div class="team-member-name">Kadircan Bilir</div>
+                    <div class="team-member-role">Designer</div>
+                </div>
+        
+                <div class="team-member-card">
+                    <div class="team-member-image">
+                        <img src="ekip-uyesi4.jpg" alt="Ekip Üyesi 4">
+                    </div>
+                    <div class="team-member-name">Kerem Yıldız</div>
+                    <div class="team-member-role">Co-Founder</div>
+                </div>
+
+                <div class="team-member-card">
+                    <div class="team-member-image">
+                        <img src="ekip-uyesi5.jpg" alt="Ekip Üyesi 5">
+                    </div>
+                    <div class="team-member-name">Mert Hızmalı</div>
+                    <div class="team-member-role">Co-Founder</div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <footer>
+        <div class="social-icons">
+          <a href="https://tr.linkedin.com/company/matiricie"><img src="linkedin-logo.png" alt="LinkedIn"></a>
+          <a href="https://www.instagram.com/matiricie"><img src="instagram-logo.png" alt="Instagram"></a>
+        </div>
+      </footer>
+    
+</body>
+
+</html>
