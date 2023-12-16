@@ -1,2 +1,4 @@
 https://goerli.infura.io/v3/59ed87f9fdb0404ab3163bc51c300ff6
 59ed87f9fdb0404ab3163bc51c300ff6
+
+abi bzz-raw://6612ae8c82aa3059827c6836497e9a151ad9f47f6a1a480032915eecbf88ef05
